@@ -21,6 +21,7 @@ public:
     Block(const Block&) = delete;
     int getValue();
     void setValue(int value);
+    void resetValue();
     void print();
 };
 

@@ -7,7 +7,7 @@
 
 // 2048
 class Game {
-    std::array<std::array<Block, 4>, 4> Board;
+    std::array<std::array<Block, 6>, 6> Board;
 
     Direction getKeyPress() {
         struct termios oldt, newt;
@@ -74,8 +74,13 @@ class Game {
 
                         if (b->getValue() == 0 && a->getValue() != 0) {
                             b->setValue(a->getValue());
-                            a->setValue(0);
+                            a->resetValue();
                             moved = true;
+                        }
+                        else if (b->getValue() == a->getValue())
+                        {
+                            b->setValue(a->getValue());
+                            a->resetValue();
                         }
                     }
                 } while (moved);
