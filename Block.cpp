@@ -5,6 +5,7 @@
 #include "Block.h"
 #include "iostream"
 #include "string"
+#include "math.h"
 
 Block::Block(int value) {
     this->value = value;
@@ -13,8 +14,11 @@ Block::Block(int value) {
 
 void Block::print() {
     int size = std::to_string(value).size();
+
     std::cout << color;
-    std::cout << std::string(7 - size, ' ') << value << std::string(7 - size, ' ');
+    std::cout << std::string((10 - size) / 2, ' ');
+    std::cout << value;
+    std::cout << std::string(std::ceil(static_cast<float>(10 - size) / 2), ' ');
     std::cout << "\x1b[0m ";
 }
 
@@ -33,4 +37,13 @@ void Block::setColor() {
         color = "\x1b[41m\0";
     else
         color = "\x1b[42m\0";
+}
+
+int Block::getValue() {
+    return value;
+}
+
+void Block::setValue(int value) {
+    this->value = value;
+    setColor();
 }

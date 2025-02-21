@@ -14,12 +14,13 @@ enum class Direction {
 class Block {
     int value;
     std::string color;
+    void setColor();
 public:
     explicit Block(int value = 0);
-    Block(const Block&) = delete;
-    Block(Block&&) = delete;
 
-    void setColor();
+    Block(const Block&) = delete;
+    int getValue();
+    void setValue(int value);
     void print();
 };
 
